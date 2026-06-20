@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Strength Analyzer</title>
+</head>
+<body>
+    <h2>Password Strength Analyzer</h2>
+
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkStrength()">Check</button>
+
+    <p id="result"></p>
+
+    <script>
+        function checkStrength() {
+            let password = document.getElementById("password").value;
+            let strength = "Weak";
+
+            if (
+                password.length >= 8 &&
+                /[A-Z]/.test(password) &&
+                /[a-z]/.test(password) &&
+                /[0-9]/.test(password) &&
+                /[^A-Za-z0-9]/.test(password)
+            ) {
+                strength = "Strong";
+            } else if (password.length >= 6) {
+                strength = "Medium";
+            }
+
+            document.getElementById("result").innerText =
+                "Password Strength: " + strength;
+        }
+    </script>
+</body>
+</html>
